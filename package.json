@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/meowmeowcomputers/To-Do-List#readme",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "hbs": "^4.0.1",
