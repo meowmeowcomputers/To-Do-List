@@ -1,6 +1,19 @@
-<form action="/submit" method="POST">
+<title>{{title}}</title>
+
+<form action="/submit1" method="POST">
   <label>Description</label>
   <input type="text" name="desc">
   <br><br>
   <button type="submit">Add Task</button>
 </form>
+<ul>
+  {{#each dbresults}}
+
+  {{#if done}}
+  <li><del>{{description}}</del></li>
+  {{/if}}
+  <li>{{description}}</li>
+
+
+  {{/each}}
+</ul>

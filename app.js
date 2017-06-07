@@ -6,6 +6,9 @@ var promise = require('bluebird');
 var pgp = require('pg-promise')({
   promiseLib: promise
 });
+var db = pgp({database:'todo'
+  //
+  });
 
 app.use(body_parser.urlencoded({extended: false}));
 
@@ -18,11 +21,24 @@ app.listen(8002, function () {
 });
 
 app.get('/form', function(request, response) {
-  response.render('form.hbs', {title:'form'});
+
+
+  db.query('SELECT * FROM task')
+  .then(function (dbresults) {
+    response.render('form.hbs', {title:'form', dbresults: dbresults});
+    })
+    // return dbresults;
+  // .then(function (content){
+  //
+  // })
 });
-app.post('/submit', function (request, response) {
+app.post('/submit1', function (request, response) {
+
   console.log(request.body);
-  console.log(request.body.name)
-  var x = request.body.name
+  console.log(request.body.desc)
+  var x = request.body.desc
+
+
   response.send(`${x}`);
+
 });
